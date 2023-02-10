@@ -15,11 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
 	@GetMapping("/")
-
 	public String index(Model model) {
 		model.addAttribute("mio_nome", "Tommaso");
 
 		return "index";
+	}
+
+	@GetMapping("/movies")
+	public String movies(Model model) {
+		model.addAttribute("mio_nome", "Tommaso");
+		model.addAttribute("movies", getBestMovies());
+
+		return "movies";
 	}
 
 	public List<Movie> getBestMovies() {
@@ -34,6 +41,14 @@ public class MainController {
 		movieList.add(new Movie(6, "Star Wars Episodio VI: Il ritorno dello Jedi"));
 
 		return movieList;
+	}
+
+	@GetMapping("/songs")
+	public String songs(Model model) {
+		model.addAttribute("mio_nome", "Tommaso");
+		model.addAttribute("songs", getBestSongs());
+
+		return "songs";
 	}
 
 	public List<Song> getBestSongs() {
