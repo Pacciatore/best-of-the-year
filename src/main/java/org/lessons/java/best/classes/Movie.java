@@ -2,8 +2,20 @@ package org.lessons.java.best.classes;
 
 public class Movie {
 
-	public Movie() {
-		// TODO Auto-generated constructor stub
+	private int id;
+	private String title;
+
+	public Movie(int _id, String _title) {
+		this.id = _id;
+		this.title = _title;
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
+	public String getTitle() {
+		return this.title;
 	}
 
 }
