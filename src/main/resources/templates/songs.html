@@ -25,12 +25,7 @@
 		
 		<div class="container pt-5 text-center">
 			<ul class="list-group">
-				<li class="list-group-item" th:text="${songs[0]}"></li>
-				<li class="list-group-item" th:text="${songs[1]}"></li>
-				<li class="list-group-item" th:text="${songs[2]}"></li>
-				<li class="list-group-item" th:text="${songs[3]}"></li>
-				<li class="list-group-item" th:text="${songs[4]}"></li>
-				<li class="list-group-item" th:text="${songs[5]}"></li>
+				<li th:each="song : ${songs}" class="list-group-item"><a th:href="@{/songs/{id}(id = ${song.id})}" th:text="${song}"></a></li>
 			</ul>
 		</div>
 		

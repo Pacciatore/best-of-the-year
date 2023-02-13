@@ -7,6 +7,7 @@ import org.lessons.java.best.classes.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -21,6 +22,13 @@ public class SongController {
 		model.addAttribute("songs", songList);
 
 		return "songs";
+	}
+
+	@GetMapping("/{id}")
+	public String song(Model model, @PathVariable("id") String id) {
+		model.addAttribute("song", songList.get(Integer.parseInt(id) - 1));
+
+		return "song";
 	}
 
 	public List<Song> getBestSongs() {
