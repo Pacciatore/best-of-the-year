@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/songs")
 public class SongController {
 
+	private List<Song> songList = getBestSongs();
+
 	@GetMapping()
 	public String songs(Model model) {
 		model.addAttribute("mio_nome", "Tommaso");
-		model.addAttribute("songs", getBestSongs());
+		model.addAttribute("songs", songList);
 
 		return "songs";
 	}
