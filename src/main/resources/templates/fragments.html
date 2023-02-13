@@ -16,11 +16,19 @@
 			
 			<div class="navbar-brand">Best of</div>
 			
-			<ul class="navbar-nav flex-row ps-5 gap-5">
+
 				<!-- TODO: th:href="@{navElement.link}" e [[ navElement.name ]] -->
-				<li class="navbar-item"><a class="btn btn-outline-dark" th:classAppend="${page == 'movies'} ? active : not-active" th:href="@{ movies }">Movies</a></li>
-				<li class="navbar-item"><a class="btn btn-outline-dark" th:classAppend="${page == 'songs'} ? active : not-active" th:href="@{ songs }">Songs</a></li>
-			</ul>
+				<ul class="navbar-nav flex-row ps-5 gap-5" th:unless="${page == 'home'}">
+					<li class="navbar-item"><a class="btn btn-outline-dark" th:classAppend="${page == 'movies'} ? active : not-active" th:href="@{ movies }">Movies</a></li>
+					<li class="navbar-item"><a class="btn btn-outline-dark" th:classAppend="${page == 'songs'} ? active : not-active" th:href="@{ songs }">Songs</a></li>
+					<li class="navbar-item"><a class="btn btn-outline-dark" th:href="@{/}">Home</a></li>
+				</ul>
+				
+				<ul class="navbar-nav flex-row ps-5 gap-5" th:if="${page == 'home'}">
+					<li class="navbar-item"><a class="btn btn-outline-dark" th:classAppend="${page == 'movies'} ? active : not-active" th:href="@{ movies }">Movies</a></li>
+					<li class="navbar-item"><a class="btn btn-outline-dark" th:classAppend="${page == 'songs'} ? active : not-active" th:href="@{ songs }">Songs</a></li>
+				</ul>
+
 		</nav>
 
 	</body>
