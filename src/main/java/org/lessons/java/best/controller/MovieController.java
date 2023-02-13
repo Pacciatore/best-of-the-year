@@ -7,18 +7,29 @@ import org.lessons.java.best.classes.Movie;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/movies")
 public class MovieController {
+
+	private List<Movie> movieList = getBestMovies();
+
 	@GetMapping()
 	public String movies(Model model) {
 		model.addAttribute("mio_nome", "Tommaso");
-		model.addAttribute("movies", getBestMovies());
+		model.addAttribute("movies", movieList);
 
 		return "movies";
 
+	}
+
+	@GetMapping("/{id}")
+	public String movie(Model model, @PathVariable("id") String id) {
+		model.addAttribute("movie", movieList.get(Integer.parseInt(id)));
+
+		return "movie";
 	}
 
 	public List<Movie> getBestMovies() {
