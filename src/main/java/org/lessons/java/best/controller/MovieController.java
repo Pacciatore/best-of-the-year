@@ -27,7 +27,7 @@ public class MovieController {
 
 	@GetMapping("/{id}")
 	public String movie(Model model, @PathVariable("id") String id) {
-		model.addAttribute("movie", movieList.get(Integer.parseInt(id)));
+		model.addAttribute("movie", movieList.get(Integer.parseInt(id) - 1));
 
 		return "movie";
 	}
